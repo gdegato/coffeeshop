@@ -1,18 +1,40 @@
-import { CoffeeDTO } from "../../models/products"
+import { CoffeeCards } from './styles'
+import { CoffeeDTO } from "../../models/product"
+import { ShoppingCartSimple } from 'phosphor-react';
 
 type Props = {
-  product: CoffeeDTO
+  product: CoffeeDTO;
 }
 
 export function Card({ product }: Props) {
-    return (
-      <div>
-        <img src={product.img} alt={product.title} />
-            <h2>{product.title}</h2>
-            <p>{product.category} </p>
-            <p>{product.content} </p>
-            <p>{product.price.toFixed(2)} </p>
+  return (
+    <CoffeeCards>
+      <img src={product.imgUrl} alt={product.title} />
+      <div className='tag'>
+        {product.category.map(
+          (item) =>
+            <h6>{item}
+            </h6>
+        )}
       </div>
-    )
-  }
-  
+      <h2>{product.title}</h2>
+      <p className='content'>{product.content} </p>
+      <div className='price'>
+        <p className='price-tag'>R$
+          <h3>
+          {product.price.toFixed(2)}
+          </h3>
+        </p>
+        <p className='sign-tag'>
+          <span>-</span>1<span>+</span>
+        </p>
+        <span className='cart'>
+          <ShoppingCartSimple
+            size={24}
+            color="#fff"
+            weight="fill" />
+        </span>
+      </div>
+    </CoffeeCards>
+  )
+}

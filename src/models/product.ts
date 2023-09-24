@@ -1,7 +1,7 @@
 export type CoffeeDTO = {
     id: number;
     title: string;
-    img: string;
+    imgUrl: string;
     content: string;
     price: number;
     category: string[];

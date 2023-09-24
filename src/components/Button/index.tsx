@@ -1,8 +1,19 @@
-export function Button() {
-    return (
+import { PaymentContainer } from "./styles"
+
+type Props = {
+  text: string
+  children: JSX.Element;
+}
+
+export function Button({ text, children }: Props) {
+  return (
+    <PaymentContainer >
       <div>
-        Botao
+        <span>
+          {children}
+        </span>
+        {text}
       </div>
-    )
-  }
-  
+    </PaymentContainer>
+  )
+}
