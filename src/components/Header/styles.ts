@@ -9,6 +9,10 @@ export const HeaderContainer = styled.header`
   margin: 0 auto;
   padding: 2rem 0;
 
+  .nav-link-header{
+    text-decoration: none;
+  }
+
   nav {
     display: flex;
     gap: 0.5rem;

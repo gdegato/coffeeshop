@@ -1,10 +1,19 @@
 import { Bank, CreditCard, CurrencyDollarSimple, MagnifyingGlass, MapPin, Money } from 'phosphor-react'
 import { ContainerOrder, ContainerPayment, Title, CheckoutContainer, ContainerPrincipal } from './styles'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import * as profileService from '../../../services/profile-service'
+import * as cartService from '../../../services/cart-service'
 import { Button } from '../../../components/Button';
 import { Sidebar } from '../../../components/Sidebar';
+import { ContextCartCount } from '../../../utils/context-cart';
+import { OrderDTO, OrderItemDTO } from '../../../models/order';
+import { CoffeeDTO } from '../../../models/product';
 
+
+/* function getListProducts() {
+  setContextCartCount(cartService.getCart().total)
+  console.log()
+} */
 
 type FormData = {
   cep: string;
@@ -16,6 +25,11 @@ type FormData = {
 }
 
 export function Checkout() {
+
+  const [coffeeList, setCoffeeList] = useState<CoffeeDTO[]>([])
+
+  const { contextCartCount, setContextCartCount } = useContext(ContextCartCount)
+
 
   const [formData, setFormData] = useState<FormData>({
     cep: '',
@@ -123,10 +137,10 @@ export function Checkout() {
         </CheckoutContainer>
       </div>
       <div>
-        <div className='aside-title'>          
-        <Title>Cafés selecionados</Title>
-        </div>
-        <Sidebar />
+        <div className='aside-title'>
+          <Title>Cafés selecionados</Title>
+        </div>      
+            <Sidebar/>       
       </div>
     </ContainerPrincipal>
   )

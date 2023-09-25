@@ -14,7 +14,8 @@ export function get(): OrderDTO {
     const obj = JSON.parse(str) as OrderDTO;
     const cart = new OrderDTO();
     obj.items.forEach(x => {
-        cart.items.push(new OrderItemDTO(x.content, x.imgUrl, x.price, x.imgUrl, x.quantity,x.category, x.title))
+        cart.items.push(new OrderItemDTO(x.productId, x.quantity, x.price,
+            x.content, x.category,  x.title, x.imgUrl))
     })
 
     return cart;

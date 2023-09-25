@@ -36,6 +36,7 @@ export function increaseItem(productId: number) {
     console.log("chamou increase no service")
     const cart = cartRepository.get();
     const item = cart.items.find(x => x.productId === productId);
+    console.log('aqui no increase', item, productId, cart)
     if (item) {
         item.quantity++;
         cartRepository.save(cart);

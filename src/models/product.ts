@@ -5,5 +5,5 @@ export type CoffeeDTO = {
   title: string
   imgUrl: string
   content: string
-  category: []
+  category: string[]
   }

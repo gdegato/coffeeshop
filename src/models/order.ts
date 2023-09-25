@@ -16,7 +16,7 @@ export class OrderItemDTO {
     public quantity: number,   
     public price: number,
     public content: string,
-    public category: [],
+    public category: string[],
     public title: string,
     public imgUrl: string,
   ) {}

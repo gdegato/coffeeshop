@@ -3,53 +3,39 @@ import { Card } from '../../../components/Card'
 import coffeeCup from '../../../assets/images/coffee-cup.png'
 import { ShoppingCart, Timer, Coffee, Package } from 'phosphor-react'
 import { HomeContainer, ProductsList, Subtitle } from './styles'
-/* import { useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import * as cartService from '../../../services/cart-service'
 import { ContextCartCount } from '../../../utils/context-cart'
 import { useNavigate } from 'react-router-dom'
-import { OrderDTO } from '../../../models/order' */
+import { OrderDTO } from '../../../models/order'
 
 export function Home() {
-/*
+
   const navigate = useNavigate()
 
   const [cart, setCart] = useState<OrderDTO>(cartService.getCart())
 
+
   const { setContextCartCount } = useContext(ContextCartCount);
 
-  function handleClearClick() {
-      cartService.clearCart();
-      updateCart();
-  }
+  function handleNewValue(newValue: number) {
 
-  function handleIncreaseItem(productId: number) {
-      cartService.increaseItem(productId);
-      setCart(cartService.getCart());
+    console.log('na home handleNewValue', newValue)
   }
-  function handleDecreaseItem(productId: number) {
-      cartService.decreaseItem(productId);
-      updateCart()
-  }
-
-  function updateCart() {
-      const newCart = cartService.getCart()
-      setCart(newCart);
-      setContextCartCount(newCart.items.length)
-  }
-
-   function handlePlaceOrderClick() {
+  
+  /*  function handlePlaceOrderClick() {
       orderService.placeOrderRequest(cart)
           .then(response => {
               cartService.clearCart();
               setContextCartCount(0);
               navigate(`/confirmation/${response.data.id}`)
-          })
-  } */
+          }) */
+
 
   return (
     <>
       <HomeContainer>
-        <header className='header-background'>
+       <header className='header-background'>
           <div>
             <h1>
               Encontre o café perfeito para qualquer hora do dia
@@ -80,6 +66,7 @@ export function Home() {
             <Card
               key={item.id}
               product={{ ...item, quantity: 0 }}
+              onNewValue={handleNewValue}
             />
           )
         }
