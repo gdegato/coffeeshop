@@ -14,7 +14,15 @@ export function addProduct(product: CoffeeDTO) {
     const cart = cartRepository.get();
     const item = cart.items.find(x => x.productId === product.id);
     if (!item) {
-        const newItem = new OrderItemDTO(product.id, 1, product.title, product.price, product.imgUrl)
+        const newItem = new OrderItemDTO(
+            product.id,            
+            product.quantity,
+            product.price,
+            product.content,
+            product.category,
+            product.title,
+            product.imgUrl
+        )
         cart.items.push(newItem);
         cartRepository.save(cart);
     }
@@ -25,6 +33,7 @@ export function clearCart() {
 }
 
 export function increaseItem(productId: number) {
+    console.log("chamou increase no service")
     const cart = cartRepository.get();
     const item = cart.items.find(x => x.productId === productId);
     if (item) {
@@ -34,6 +43,7 @@ export function increaseItem(productId: number) {
 }
 
 export function decreaseItem(productId: number) {
+    console.log("chamou decrease no service")
     const cart = cartRepository.get();
     const item = cart.items.find(x => x.productId === productId);
     if (item) {
