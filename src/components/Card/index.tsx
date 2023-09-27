@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { CoffeeCards } from './styles'
 import { CoffeeDTO } from "../../models/product"
 import { ShoppingCartSimple } from 'phosphor-react';
@@ -26,8 +27,7 @@ export function Card({ product, onNewValue }: Props) {
       setCart(cartService.getCart())
       setContextCartCount(cart.items.length)
     }
-    cartService.decreaseItem(decr);   
-    console.log('aqui decrescimo oh', decr)
+    cartService.decreaseItem(decr);
   }
 
   function handleIncrease() {
@@ -35,31 +35,25 @@ export function Card({ product, onNewValue }: Props) {
     cartService.increaseItem(sum);
     setCart(cartService.getCart());
     setCount(sum)
-    console.log('aqui a soma increase oh', sum)
   }
-
 
   function updateCart() {
     const newCart = cartService.getCart()
     setCart(newCart);
     setContextCartCount(newCart.items.length)
-    console.log('update ==>', newCart.items.length )
   }
-
 
   function handleAddCart() {
     const addProduct = count;
-    cartService.addProduct({...product, quantity: count})
+    cartService.addProduct({ ...product, quantity: count })
     if (onNewValue) {
       onNewValue(addProduct)
     }
     updateCart()
-    console.log('card ==> ', {...product, quantity: count})
   }
 
   return (
     <>
-
       < CoffeeCards >
         <img src={product.imgUrl} alt={product.title} />
         <div className='tag'>
@@ -93,7 +87,6 @@ export function Card({ product, onNewValue }: Props) {
           </span>
         </div>
       </CoffeeCards >
-
     </>
   )
 }

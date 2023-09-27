@@ -4,7 +4,6 @@ import { OrderDTO, OrderItemDTO } from "../models/order";
 import { CART_KEY } from "../utils/system";
 
 export function save(cart: OrderDTO) {
-
     const str = JSON.stringify(cart);
     localStorage.setItem(CART_KEY, str)
 }
@@ -25,3 +24,6 @@ export function clear() {
     localStorage.setItem(CART_KEY, '{"items":[]}');
 }
 
+export function remove() {
+    localStorage.removeItem(CART_KEY)
+}

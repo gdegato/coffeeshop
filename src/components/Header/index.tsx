@@ -8,7 +8,9 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <img src={logo} />
+      <NavLink to='/'>
+        <img src={logo} />
+      </NavLink>
       <nav>
         <p>
           <MapPin size={24} color='#8047F8' weight="fill" />
@@ -17,7 +19,7 @@ export function Header() {
         <span>
           <NavLink
             className='nav-link-header'
-            to="/checkout" title='Cart'>          
+            to="/checkout" title='Cart'>
             <CartIcon />
           </NavLink>
         </span>

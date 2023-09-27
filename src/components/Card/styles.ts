@@ -29,7 +29,7 @@ export const CoffeeCards = styled.div`
       }
     }
 
-    .sign-tag {
+   .sign-tag {
       background: ${(props) => props.theme['base-button']};
       height: 38px;
       width: 72px;
@@ -44,7 +44,7 @@ export const CoffeeCards = styled.div`
       span {
         color: ${(props) => props.theme['purple']};        
       }
-    }
+    } 
 
     .cart {
       background-color: ${(props) => props.theme['purple-dark']};

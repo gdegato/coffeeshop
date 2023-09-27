@@ -5,11 +5,11 @@ import { MapPin } from "phosphor-react";
 import { useState, useContext } from 'react'
 import { OrderDTO } from "../../models/order";
 
-
 export function Sidebar() {
 
     const { setContextCartCount } = useContext(ContextCartCount);
-    const [cart, setCart] = useState<OrderDTO>(cartService.getCart())
+
+    const [cart, setCart] = useState<OrderDTO>(cartService.getCart());
 
     const [count, setCount] = useState(0);
 
@@ -18,10 +18,9 @@ export function Sidebar() {
         if (decr !== -1) {
             setCount(decr)
             setCart(cartService.getCart())
-            setContextCartCount(cart.items.length)           
+            setContextCartCount(cart.items.length)
         }
         cartService.decreaseItem(decr);
-        console.log('CHECKOUT decrescimo oh', decr)
     }
 
     function handleIncrease() {
@@ -29,17 +28,26 @@ export function Sidebar() {
         cartService.increaseItem(sum);
         setCart(cartService.getCart());
         setCount(sum)
-        console.log('CHECKOUT a soma increase oh', sum)
     }
 
+    function handleRemoveCartItem(productId: number) {
+        if (productId) {
+            cartService.removeCartItem(productId)
+        }
+        updateCart()
+    }
 
     function updateCart() {
         const newCart = cartService.getCart()
         setCart(newCart);
-        setContextCartCount(newCart.items.length)      
-        console.log('update ==>', newCart.items.length)
+        setContextCartCount(newCart.items.length)
     }
 
+    const delivery: number = 3.50
+    const deliverySum = () => {
+        const sum = cart.total + delivery
+        return sum
+    }
 
     return (
         <SidebarContainer>
@@ -59,7 +67,9 @@ export function Sidebar() {
                                         <p className='sign-tag'>
                                             <span
                                                 onClick={() => handleDecrease()}>-</span>
-                                            {item.quantity}
+                                            <span>
+                                                {item.quantity}
+                                            </span>
                                             <span
                                                 onClick={() => handleIncrease()}>+</span>
                                         </p>
@@ -67,14 +77,14 @@ export function Sidebar() {
                                             <span>
                                                 <MapPin size={16} color='#4B2995' />
                                             </span>
-                                            <span>remover</span>
+                                            <span onClick={() => handleRemoveCartItem(item.productId)} >remover</span>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <p className='price-tag'>
-                                    R${item.price.toFixed(2)}
+                                    R$   {item.subTotal.toFixed(2)}
                                 </p>
                             </div>
                         </div>
@@ -85,15 +95,15 @@ export function Sidebar() {
             <div className="checkout-total-container">
                 <div className="checkout-subtotal">
                     <p>Total de itens</p>
-                    <p>R$50,00</p>
+                    <p>R${cart.total.toFixed(2)}</p>
                 </div>
                 <div className="checkout-total-delivery">
                     <p>Entrega</p>
-                    <p>R$3,50</p>
+                    <p>R${delivery.toFixed(2)}</p>
                 </div>
                 <div className="checkout-total-order">
                     <h3>Total</h3>
-                    <h3>R$55.30</h3>
+                    <h3>R$ {deliverySum().toFixed(2)} </h3>
                 </div>
             </div>
             <ButtonCheckout>
@@ -109,7 +119,6 @@ import styles from './Avatar.module.css'
 
 interface AvatarProps extends ImgHTMLAttributes<HTMLImageElement> {
   hasBorder?: boolean;
-
 }
 
 export function Avatar({ hasBorder = true, ...props }: AvatarProps) {
