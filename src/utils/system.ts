@@ -1,3 +1,3 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-export const CART_KEY = "com.devsuperior.dscommerce/Cart"
+export const CART_KEY = "gdegato/Cart"
 

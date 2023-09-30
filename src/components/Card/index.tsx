@@ -27,6 +27,7 @@ export function Card({ product, onNewValue }: Props) {
       setCart(cartService.getCart())
       setContextCartCount(cart.items.length)
     }
+    console.log("diminuir item no CARD", cartService.decreaseItem(decr))
     cartService.decreaseItem(decr);
   }
 
@@ -35,6 +36,7 @@ export function Card({ product, onNewValue }: Props) {
     cartService.increaseItem(sum);
     setCart(cartService.getCart());
     setCount(sum)
+    console.log("aumentar item no CARD", cartService.decreaseItem(sum))
   }
 
   function updateCart() {

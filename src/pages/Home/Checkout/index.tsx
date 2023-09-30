@@ -46,6 +46,12 @@ export function Checkout() {
     setFormData({ ...formData, [name]: value })
   }
 
+  
+  function handleNewValue(newValue: number) {
+
+    console.log('na home handleNewValue', newValue)
+  }
+
   function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
@@ -140,7 +146,7 @@ export function Checkout() {
         <div className='aside-title'>
           <Title>Cafés selecionados</Title>
         </div>      
-            <Sidebar/>       
+        <Sidebar onNewValue={handleNewValue} />       
       </div>
     </ContainerPrincipal>
   )

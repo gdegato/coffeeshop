@@ -4,31 +4,28 @@ import { ContextCartCount } from '../../utils/context-cart'
 import { MapPin } from "phosphor-react";
 import { useState, useContext } from 'react'
 import { OrderDTO } from "../../models/order";
+import { useNavigate } from "react-router-dom";
 
 export function Sidebar() {
+
+    const navigate = useNavigate();
 
     const { setContextCartCount } = useContext(ContextCartCount);
 
     const [cart, setCart] = useState<OrderDTO>(cartService.getCart());
 
-    const [count, setCount] = useState(0);
 
-    function handleDecrease() {
-        const decr = count - 1
-        if (decr !== -1) {
-            setCount(decr)
-            setCart(cartService.getCart())
-            setContextCartCount(cart.items.length)
-        }
-        cartService.decreaseItem(decr);
+    function handleDecrease(productId: number) {
+        cartService.decreaseItem(productId);
+        updateCart()
     }
 
-    function handleIncrease() {
-        const sum = count + 1
-        cartService.increaseItem(sum);
+
+    function handleIncrease(productId: number) {
+        cartService.increaseItem(productId);
         setCart(cartService.getCart());
-        setCount(sum)
     }
+
 
     function handleRemoveCartItem(productId: number) {
         if (productId) {
@@ -66,12 +63,12 @@ export function Sidebar() {
                                     <div className="tags">
                                         <p className='sign-tag'>
                                             <span
-                                                onClick={() => handleDecrease()}>-</span>
+                                                onClick={() => handleDecrease(item.productId)}>-</span>
                                             <span>
                                                 {item.quantity}
                                             </span>
                                             <span
-                                                onClick={() => handleIncrease()}>+</span>
+                                                onClick={() => handleIncrease(item.productId)}>+</span>
                                         </p>
                                         <p className='remove-tag'>
                                             <span>
@@ -128,4 +125,4 @@ export function Avatar({ hasBorder = true, ...props }: AvatarProps) {
       {...props}
     />
   )
-} */
+}  */
