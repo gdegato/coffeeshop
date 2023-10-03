@@ -1,12 +1,16 @@
 import { SidebarContainer, ButtonCheckout } from "./styles";
-import * as cartService from '../../services/cart-service'
-import { ContextCartCount } from '../../utils/context-cart'
+import * as cartService from '../../../../services/cart-service'
+import { ContextCartCount } from '../../../../utils/context-cart'
 import { MapPin } from "phosphor-react";
 import { useState, useContext } from 'react'
-import { OrderDTO } from "../../models/order";
+import { OrderDTO } from "../../../../models/order";
 import { useNavigate } from "react-router-dom";
 
-export function Sidebar() {
+type Props = {
+    onNewClick?: Function
+}
+
+export function Sidebar({onNewClick}: Props) {
 
     const navigate = useNavigate();
 
@@ -14,18 +18,15 @@ export function Sidebar() {
 
     const [cart, setCart] = useState<OrderDTO>(cartService.getCart());
 
-
     function handleDecrease(productId: number) {
         cartService.decreaseItem(productId);
         updateCart()
     }
 
-
     function handleIncrease(productId: number) {
         cartService.increaseItem(productId);
         setCart(cartService.getCart());
     }
-
 
     function handleRemoveCartItem(productId: number) {
         if (productId) {
@@ -46,12 +47,17 @@ export function Sidebar() {
         return sum
     }
 
+    function handleSubmitOrder() {
+        console.log('enviou')
+        navigate('/checkout')
+    }
+
     return (
         <SidebarContainer>
             <div className="checkout-container">
                 {cart.items.length !== 0 && (
                     cart.items.map(item => (
-                        <div className="checkout-list">
+                        <div key={item.productId} className="checkout-list">
                             <div className="tags-container">
                                 <div>
                                     <img src={item.imgUrl} />
@@ -103,7 +109,7 @@ export function Sidebar() {
                     <h3>R$ {deliverySum().toFixed(2)} </h3>
                 </div>
             </div>
-            <ButtonCheckout>
+            <ButtonCheckout onClick={handleSubmitOrder}>
                 confirmar pedido
             </ButtonCheckout>
         </SidebarContainer >

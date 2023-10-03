@@ -27,11 +27,6 @@ export function addProduct(product: CoffeeDTO) {
     cartRepository.save(cart)
   }
 }
-
-export function clearCart2() {
-  cartRepository.clear()
-}
-
 export function clearCart(productId: number) {
   const cart = cartRepository.get()
   const item = cart.items.find((x) => x.productId === productId)
