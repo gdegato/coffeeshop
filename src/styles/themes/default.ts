@@ -1,14 +1,15 @@
 export const defaultTheme = {
   white: '#FFF',
+  alert: ' #D0342C',
 
   'gray-100': '#E1E1E6',
 
   'yellow-dark': '#C47F17',
   'yellow-light': '#F1E9C9',
-  'yellow': '#DBAC2C',
+  yellow: '#DBAC2C',
 
   'purple-dark': '#4B2995',
-  'purple': '#8047F8',
+  purple: '#8047F8',
   'purple-light': '#EBE5F9',
 
   'base-title': '#272221',

@@ -12,15 +12,28 @@ export const ContainerOrder = styled.div`
   display: flex;
   padding: 40px;
 
+  .input-cep{
+    display: flex;
+    align-items: center;
+  }
+
+  .container-form{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
   form {
     button {
       border-style: none;
       height: 42px;
+      width: 40px;
+      margin-left: 4px;
     }
   }
   button:hover {
     background: ${(props) => props.theme['purple-light']};
     border-radius: 4px;
+    box-shadow: none;
   }
 
   div {
@@ -45,7 +58,18 @@ export const ContainerOrder = styled.div`
     border: 1px solid ${(props) => props.theme['base-input']};
     border-radius: 4px;
     margin: 6px;
+
+    
   }
+
+  /*   .dsc-form-control[data-dirty='true'][data-invalid='true'] ~ div {
+    display: unset;
+  } */
+
+  .form-error {
+    color: ${(props) => props.theme['alert']};
+    font-size: 12px;     
+  } 
 
   [class^='col-'] {
     box-sizing: border-box;
@@ -75,4 +99,3 @@ export const ContainerOrder = styled.div`
     width: 60px;
   }
 `
-

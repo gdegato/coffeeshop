@@ -6,22 +6,26 @@ import { ContextCartCount } from '../../../utils/context-cart';
 import { useNavigate } from 'react-router-dom';
 import { AddressForm } from './AddressForm';
 import { Payment } from './Payment';
-
+import { FormProvider, useForm } from 'react-hook-form';
 
 
 export function Checkout() {
 
   const navigate = useNavigate();
+  const methods = useForm();
 
   const { setContextCartCount } = useContext(ContextCartCount)
 
   function handlePlaceOrderClick() {
     cartService.saveCart
     setContextCartCount(0);
+    console.log('mandou no chekout para o success')
     navigate('/success')
   }
 
   return (
+    <FormProvider {...methods}>
+
     <ContainerPrincipal>
       <div>
         <Title>Complete seu pedido</Title>
@@ -37,6 +41,7 @@ export function Checkout() {
         <Sidebar onNewClick={handlePlaceOrderClick} />
       </div>
     </ContainerPrincipal>
+    </FormProvider>
   )
 }
 

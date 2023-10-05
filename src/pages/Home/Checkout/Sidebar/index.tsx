@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SidebarContainer, ButtonCheckout } from "./styles";
 import * as cartService from '../../../../services/cart-service'
 import { ContextCartCount } from '../../../../utils/context-cart'
@@ -5,14 +6,17 @@ import { MapPin } from "phosphor-react";
 import { useState, useContext } from 'react'
 import { OrderDTO } from "../../../../models/order";
 import { useNavigate } from "react-router-dom";
+import { useFormContext } from "react-hook-form";
 
 type Props = {
     onNewClick?: Function
 }
 
-export function Sidebar({onNewClick}: Props) {
+export function Sidebar({ onNewClick }: Props) {
 
     const navigate = useNavigate();
+
+    const { handleSubmit } = useFormContext(); 
 
     const { setContextCartCount } = useContext(ContextCartCount);
 
@@ -47,11 +51,16 @@ export function Sidebar({onNewClick}: Props) {
         return sum
     }
 
-    function handleSubmitOrder() {
-        console.log('enviou')
-        navigate('/checkout')
-    }
-
+    const handleSubmitOrder = () => {
+        handleSubmit((data) => {      
+          console.log('Dados do formulário do AddressForm:', data);
+    
+          if (onNewClick) {
+            onNewClick();
+          }
+          navigate('/success');
+        })();
+      };
     return (
         <SidebarContainer>
             <div className="checkout-container">
