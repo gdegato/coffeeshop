@@ -1,11 +1,28 @@
-import { createContext } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { createContext } from 'react'
 
-export type ContextOrder = {
-    contextOrder: string;
-    setContextCartCount: (contextOrder: string) => void;
+export interface CreateFinalOrderData {
+  paymentMethod: string
+  logradouro: string
+  numero: string
+  bairro: string
+  localidade: string
+  uf: string
 }
 
-export const ContextOrder = createContext<ContextOrder>({
-    contextOrder: '',
-    setContextCartCount: () => {}
+export type ContextFinalOrderType = {
+  contextFinalOrder: CreateFinalOrderData
+  setContextFinalOrder: (contextOrder: CreateFinalOrderData) => void
+}
+
+export const ContextFinalOrder = createContext<ContextFinalOrderType>({
+  contextFinalOrder: {
+    paymentMethod: '',
+    logradouro: '',
+    numero: '',
+    bairro: '',
+    localidade: '',
+    uf: '',
+  },
+  setContextFinalOrder: () => {},
 })

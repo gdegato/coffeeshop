@@ -16,7 +16,8 @@ export default function CartIcon() {
                 {contextCartCount > 0 &&
                     <CartCounter>
                         {contextCartCount}
-                    </CartCounter>                }
+                    </CartCounter>
+                }                
             </Container>
         </>
     )

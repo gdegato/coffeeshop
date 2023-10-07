@@ -9,10 +9,9 @@ import { OrderDTO } from '../../models/order';
 
 type Props = {
   product: CoffeeDTO;
-  onNewValue: Function;
 }
 
-export function Card({ product, onNewValue }: Props) {
+export function Card({ product }: Props) {
 
   const { setContextCartCount } = useContext(ContextCartCount);
 
@@ -26,8 +25,7 @@ export function Card({ product, onNewValue }: Props) {
       setCount(decr)
       setCart(cartService.getCart())
       setContextCartCount(cart.items.length)
-    }
-    console.log("diminuir item no CARD", cartService.decreaseItem(decr))
+    }  
     cartService.decreaseItem(decr);
   }
 
@@ -36,7 +34,6 @@ export function Card({ product, onNewValue }: Props) {
     cartService.increaseItem(sum);
     setCart(cartService.getCart());
     setCount(sum)
-    console.log("aumentar item no CARD", cartService.decreaseItem(sum))
   }
 
   function updateCart() {
@@ -45,12 +42,8 @@ export function Card({ product, onNewValue }: Props) {
     setContextCartCount(newCart.items.length)
   }
 
-  function handleAddCart() {
-    const addProduct = count;
-    cartService.addProduct({ ...product, quantity: count })
-    if (onNewValue) {
-      onNewValue(addProduct)
-    }
+  function handleAddCart() {   
+    cartService.addProduct({ ...product, quantity: count })  
     updateCart()
   }
 
