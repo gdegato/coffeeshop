@@ -2,7 +2,10 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  padding-left: 50px;
+  align-items: center;
+  justify-content: space-around;
+  width: auto;
 
   .success-image {
     margin-top: 132px;
@@ -25,14 +28,20 @@ export const Container = styled.div`
     }
   }
 
-  .gradient {
-    width: 526px;
+  .gradient {   
+    padding: 1px;
+    background: linear-gradient(
+      30deg,
+      ${(props) => props.theme['yellow-light']},
+      ${(props) => props.theme['purple-light']}
+    );
+    border-radius: 6px 36px;
   }
 
   .success-container {
-    border: 1px solid ${(props) => props.theme['purple-light']};
-    border-radius: 6px 36px;
     padding: 40px;
+    border-radius: inherit;
+    background-color: ${(props) => props.theme['background']};
   }
 
   span {

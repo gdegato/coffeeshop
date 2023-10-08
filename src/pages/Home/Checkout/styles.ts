@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const ContainerPrincipal = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   .aside-title {
     padding-left: 32px;
@@ -150,7 +150,9 @@ export const SidebarContainer = styled.aside`
     display: flex;
     justify-content: space-between;
     margin-bottom: 24px;
+    padding-bottom: 24px;
     color: ${(props) => props.theme['base-text']};
+    border-bottom: 1px solid ${(props) => props.theme['base-button']};
   }
 
   img {
@@ -211,7 +213,7 @@ export const SidebarContainer = styled.aside`
   }
 
   .checkout-container {
-    border-bottom: 1px solid ${(props) => props.theme['base-button']};
+   
     margin-top: 20px;
   }
 

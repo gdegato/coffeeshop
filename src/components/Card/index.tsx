@@ -49,7 +49,7 @@ export function Card({ product }: Props) {
 
   return (
     <>
-      < CoffeeCards >
+      < CoffeeCards>
         <img src={product.imgUrl} alt={product.title} />
         <div className='tag'>
           {product.category.map(

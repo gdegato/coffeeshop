@@ -67,7 +67,7 @@ export function Checkout() {
     register,
     reset,
     getValues,
-    watch, formState: { errors }
+    watch, formState: { errors, isValid }
   } = newForm
 
   const userCep = watch('cep');
@@ -85,7 +85,7 @@ export function Checkout() {
       bairro: formData.bairro,
       uf: formData.uf,
       paymentMethod: buttonChecked
-    }    
+    }
 
     const finalOrderJSON = JSON.stringify(updatedFinalOrder);
     localStorage.setItem('finalOrder', finalOrderJSON);
@@ -95,19 +95,22 @@ export function Checkout() {
     navigate('/success')
   }
 
-  function handleFormSubmit(data: FormData) {
-    console.log(data)
-    if (!userCep) {
+  function handleFormSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    event.preventDefault(); // Evita que o formulário seja enviado
+
+    const formData = getValues();
+  
+    if (!formData.cep) {
       alert('O campo CEP está vazio.');
       return;
     }
 
-    apiCepService.findCEP(userCep)
+    apiCepService.findCEP(formData.cep)
       .then((response) => {
         const { logradouro, localidade, bairro, uf } = response.data;
 
         const updatedFormData = {
-          ...getValues(),
+          ...formData,
           logradouro,
           localidade,
           bairro,
@@ -119,6 +122,7 @@ export function Checkout() {
         console.error('Erro ao buscar o CEP:', error);
       });
   }
+
 
   //Funções do Payment  
 
@@ -162,7 +166,7 @@ export function Checkout() {
       <div>
         <Title>Complete seu pedido</Title>
         <FormContainer>
-          <form onSubmit={handleSubmit(handleFormSubmit)}>
+          <form>
             <div className='header-address'>
               <p><span><MapPin size={22} color="#c47f17" /></span>Endereço de entrega</p>
               <p>Informe o endereço onde deseja receber seu pedido</p>
@@ -179,7 +183,7 @@ export function Checkout() {
                   <button
                     className='search'
                     type='submit'
-                    onClick={handleFormSubmit}
+                    onClick={(e) => handleFormSubmit(e)}
                   ><MagnifyingGlass size={24} color="#8047F8" />
                   </button>
                 </div>
@@ -294,67 +298,67 @@ export function Checkout() {
           <Title>Cafés selecionados</Title>
         </div>
 
-        <SidebarContainer>       
-            <div className="checkout-container">
-              {cart.items.length !== 0 && (
-                cart.items.map(item => (
-                  <div key={item.productId} className="checkout-list">
-                    <div className="tags-container">
-                      <div>
-                        <img src={item.imgUrl} />
-                      </div>
-                      <div>
-                        <div className="tags-title">
-                          <p>{item.title}</p>
-                        </div>
-                        <div className="tags">
-                          <p className='sign-tag'>
-                            <span
-                              onClick={() => handleDecrease(item.productId)}>-</span>
-                            <span>
-                              {item.quantity}
-                            </span>
-                            <span
-                              onClick={() => handleIncrease(item.productId)}>+</span>
-                          </p>
-                          <p className='remove-tag'>
-                            <span>
-                              <MapPin size={16} color='#4B2995' />
-                            </span>
-                            <span onClick={() => handleRemoveCartItem(item.productId)} >remover</span>
-                          </p>
-                        </div>
-                      </div>
+        <SidebarContainer>
+          <div className="checkout-container">
+            {cart.items.length !== 0 && (
+              cart.items.map(item => (
+                <div key={item.productId} className="checkout-list">
+                  <div className="tags-container">
+                    <div>
+                      <img src={item.imgUrl} />
                     </div>
                     <div>
-                      <p className='price-tag'>
-                        R$   {item.subTotal.toFixed(2)}
-                      </p>
+                      <div className="tags-title">
+                        <p>{item.title}</p>
+                      </div>
+                      <div className="tags">
+                        <p className='sign-tag'>
+                          <span
+                            onClick={() => handleDecrease(item.productId)}>-</span>
+                          <span>
+                            {item.quantity}
+                          </span>
+                          <span
+                            onClick={() => handleIncrease(item.productId)}>+</span>
+                        </p>
+                        <p className='remove-tag'>
+                          <span>
+                            <MapPin size={16} color='#4B2995' />
+                          </span>
+                          <span onClick={() => handleRemoveCartItem(item.productId)} >remover</span>
+                        </p>
+                      </div>
                     </div>
                   </div>
-                ))
-              )}
+                  <div>
+                    <p className='price-tag'>
+                      R$   {item.subTotal.toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+          <div className="checkout-total-container">
+            <div className="checkout-subtotal">
+              <p>Total de itens</p>
+              <p>R${cart.total.toFixed(2)}</p>
             </div>
-            <div className="checkout-total-container">
-              <div className="checkout-subtotal">
-                <p>Total de itens</p>
-                <p>R${cart.total.toFixed(2)}</p>
-              </div>
-              <div className="checkout-total-delivery">
-                <p>Entrega</p>
-                <p>R${delivery.toFixed(2)}</p>
-              </div>
-              <div className="checkout-total-order">
-                <h3>Total</h3>
-                <h3>R$ {deliverySum().toFixed(2)} </h3>
-              </div>
+            <div className="checkout-total-delivery">
+              <p>Entrega</p>
+              <p>R${delivery.toFixed(2)}</p>
             </div>
-          <ButtonCheckout     
+            <div className="checkout-total-order">
+              <h3>Total</h3>
+              <h3>R$ {deliverySum().toFixed(2)} </h3>
+            </div>
+          </div>
+          <ButtonCheckout
             onClick={handleCheckoutSubmit}
-              disabled={isSubmitDisable}
-              type='submit'>
-              confirmar pedido
-            </ButtonCheckout>         
+            disabled={isSubmitDisable && cart.items.length === 0}
+            type='submit'>
+            confirmar pedido
+          </ButtonCheckout>
         </SidebarContainer >
       </div>
     </ContainerPrincipal>

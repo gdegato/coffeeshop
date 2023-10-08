@@ -3,11 +3,18 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  
 `
 
 export const Cart = styled.div`
 display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+
 `
+
 export const CartCounter = styled.div`
   background: ${(props) => props.theme['yellow-dark']};
   color: ${(props) => props.theme['white']};
@@ -18,7 +25,8 @@ export const CartCounter = styled.div`
   height: 16px;
   font-size: 10px;
   border-radius: 50%;
-  position: relative;
-  top: -20px;
-  left: 4%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: -5px;
+  left: 105%;
 `

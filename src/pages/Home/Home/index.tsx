@@ -2,14 +2,15 @@ import coffeeList from '../../../../db.json'
 import { Card } from '../../../components/Card'
 import coffeeCup from '../../../assets/images/coffee-cup.png'
 import { ShoppingCart, Timer, Coffee, Package } from 'phosphor-react'
-import { HomeContainer, ProductsList, Subtitle } from './styles'
+import { Header, HomeContainer, ProductsList, Subtitle } from './styles'
+
 
 export function Home() {
 
   return (
     <>
       <HomeContainer>
-        <header className='header-background'>
+        <Header>
           <div>
             <h1>
               Encontre o café perfeito para qualquer hora do dia
@@ -27,13 +28,11 @@ export function Home() {
           <div>
             <img src={coffeeCup} />
           </div>
-        </header>
+        </Header>
       </HomeContainer>
-      
       <Subtitle>
         <h3>Nossos cafés</h3>
       </Subtitle>
-
       <ProductsList>
         {
           coffeeList.map((item) =>

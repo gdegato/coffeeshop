@@ -12,12 +12,13 @@ export default function CartIcon() {
             <Container>
                 <Cart>
                     <ShoppingCart size={24} color='#C47F17' weight="fill" />
-                </Cart>
+                
                 {contextCartCount > 0 &&
                     <CartCounter>
                         {contextCartCount}
                     </CartCounter>
-                }                
+                    }
+                </Cart>              
             </Container>
         </>
     )

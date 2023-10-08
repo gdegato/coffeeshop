@@ -29,7 +29,7 @@ export function Success() {
               </div>
               <div>
                 <p>
-                  Entrega em <strong>{contextFinalOrder.logradouro},nº {contextFinalOrder.numero}</strong></p>
+                  Entrega em <strong>{contextFinalOrder.logradouro}, nº {contextFinalOrder.numero}</strong></p>
                 {contextFinalOrder.complemento &&
                   <p>Complemento: {contextFinalOrder.complemento}</p>
                 }
