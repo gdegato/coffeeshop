@@ -100,7 +100,7 @@ export function Checkout() {
     const formData = getValues();
   
     if (!formData.cep) {
-      alert('O campo CEP está vazio!');
+      alert('O campo CEP está vazio.');
       return;
     }
 
@@ -121,6 +121,7 @@ export function Checkout() {
         console.error('Erro ao buscar o CEP:', error);
       });
   }
+
 
   //Funções do Payment  
 
