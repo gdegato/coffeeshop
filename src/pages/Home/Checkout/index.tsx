@@ -62,12 +62,11 @@ export function Checkout() {
     },
   });
 
-  const {
-    handleSubmit,
+  const {    
     register,
     reset,
     getValues,
-    watch, formState: { errors, isValid }
+    watch, formState: { errors }
   } = newForm
 
   const userCep = watch('cep');
@@ -96,12 +95,12 @@ export function Checkout() {
   }
 
   function handleFormSubmit(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    event.preventDefault(); // Evita que o formulário seja enviado
+    event.preventDefault(); 
 
     const formData = getValues();
   
     if (!formData.cep) {
-      alert('O campo CEP está vazio.');
+      alert('O campo CEP está vazio!');
       return;
     }
 
@@ -122,7 +121,6 @@ export function Checkout() {
         console.error('Erro ao buscar o CEP:', error);
       });
   }
-
 
   //Funções do Payment  
 
