@@ -7,7 +7,7 @@ import { useContext } from 'react'
 
 export function Success() {
 
-  const { contextFinalOrder  } = useContext(ContextFinalOrder)
+  const { contextFinalOrder } = useContext(ContextFinalOrder)
 
   return (
     <Container>
@@ -28,14 +28,12 @@ export function Success() {
                     weight="fill" /></span>
               </div>
               <div>
-                
-                  <>
-                    <p>
-                      Entrega em <strong>{contextFinalOrder.logradouro} ,nº {contextFinalOrder.numero}</strong></p>
-                    <p> {contextFinalOrder.bairro} - {contextFinalOrder.localidade}, {contextFinalOrder.uf}</p>
-                  </>
-              
-
+                <p>
+                  Entrega em <strong>{contextFinalOrder.logradouro},nº {contextFinalOrder.numero}</strong></p>
+                {contextFinalOrder.complemento &&
+                  <p>Complemento: {contextFinalOrder.complemento}</p>
+                }
+                <p>{contextFinalOrder.bairro} - {contextFinalOrder.localidade}, {contextFinalOrder.uf}</p>
               </div>
             </div>
             <div className="success-timer">
@@ -74,7 +72,6 @@ export function Success() {
       <div className="success-image">
         <img src={deliveryguy} />
       </div>
-
     </Container>
   )
 }

@@ -5,11 +5,11 @@ import { ShoppingCart, Timer, Coffee, Package } from 'phosphor-react'
 import { HomeContainer, ProductsList, Subtitle } from './styles'
 
 export function Home() {
-  
+
   return (
     <>
       <HomeContainer>
-       <header className='header-background'>
+        <header className='header-background'>
           <div>
             <h1>
               Encontre o café perfeito para qualquer hora do dia
@@ -28,8 +28,8 @@ export function Home() {
             <img src={coffeeCup} />
           </div>
         </header>
-
       </HomeContainer>
+      
       <Subtitle>
         <h3>Nossos cafés</h3>
       </Subtitle>
@@ -40,7 +40,7 @@ export function Home() {
             <Card
               key={item.id}
               product={{ ...item, quantity: 0 }}
-             
+
             />
           )
         }

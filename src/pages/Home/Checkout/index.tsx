@@ -11,13 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
-import { AddressAndPaymentDTO, FinalOrderDTO } from '../../../models/finalOrder';
-import * as orderService from '../../../services/order-service'
 import { ContextFinalOrder } from '../../../utils/context-order';
-
-type Props = {
-  addressAndPayment: AddressAndPaymentDTO;
-}
 
 //Campos do formulário
 
@@ -25,6 +19,7 @@ const schemaValidationForm = zod.object({
   cep: zod.string().nonempty('O CEP é obrigatório'),
   logradouro: zod.string().nonempty('A rua é obrigatória'),
   numero: zod.string().nonempty('O número é obrigatório'),
+  complemento: zod.string(),
   bairro: zod.string().nonempty('O bairro é obrigatório'),
   localidade: zod.string().nonempty('A cidade é obrigatória'),
   uf: zod.string().nonempty('O estado é obrigatório'),
@@ -37,29 +32,20 @@ export function Checkout() {
   const navigate = useNavigate();
 
   const { setContextCartCount } = useContext(ContextCartCount)
-
   const { setContextFinalOrder } = useContext(ContextFinalOrder)
 
   const [cart, setCart] = useState<OrderDTO>(cartService.getCart());
-  const [buttonChecked, setButtonChecked] = useState('credit card')
+  const [buttonChecked, setButtonChecked] = useState('Cartão de crédito')
 
   const [finalOrder, setFinalOrder] = useState({
     logradouro: '',
     numero: '',
+    complemento: '',
     localidade: '',
     bairro: '',
     uf: '',
     paymentMethod: ''
-
   })
-
-  //Funcoes para mandar dados para success
-
-  function handleTeste() {
-    orderService.getFinalOrder()
-    const teste = finalOrder
-    console.log(teste, 'teste do estado');
-  }
 
   //Funções do formulário
 
@@ -69,6 +55,7 @@ export function Checkout() {
       cep: '',
       logradouro: '',
       numero: '',
+      complemento: '',
       localidade: '',
       bairro: '',
       uf: '',
@@ -83,20 +70,35 @@ export function Checkout() {
     watch, formState: { errors }
   } = newForm
 
+  const userCep = watch('cep');
+  const isSubmitDisable = !userCep
+
   function handleCheckoutSubmit() {
-    
-    setFinalOrder(watch)
-    setContextFinalOrder(finalOrder)
+    const formData = getValues()
+
+    const updatedFinalOrder = {
+      ...finalOrder,
+      logradouro: formData.logradouro,
+      numero: formData.numero,
+      localidade: formData.localidade,
+      complemento: formData.complemento,
+      bairro: formData.bairro,
+      uf: formData.uf,
+      paymentMethod: buttonChecked
+    }    
+
+    const finalOrderJSON = JSON.stringify(updatedFinalOrder);
+    localStorage.setItem('finalOrder', finalOrderJSON);
+
+    setFinalOrder(updatedFinalOrder)
+    setContextFinalOrder(updatedFinalOrder)
     navigate('/success')
-    console.log('finalorder', finalOrder)
-    console.log('passou setFinalOrder(watch)', setFinalOrder(watch))
   }
 
   function handleFormSubmit(data: FormData) {
     console.log(data)
-    const userCep = watch('cep');
     if (!userCep) {
-      console.error('O campo CEP está vazio.');
+      alert('O campo CEP está vazio.');
       return;
     }
 
@@ -193,7 +195,7 @@ export function Checkout() {
               </div>
               <div>
                 <input
-                  className='col-2'
+                  className='col-3'
                   placeholder='Número'
                   {...register('numero')}
                 />
@@ -201,13 +203,14 @@ export function Checkout() {
               </div>
               <div >
                 <input
-                  className='col-2'
+                  className='col-4'
                   placeholder='Complemento'
+                  {...register('complemento')}
                 />
               </div>
               <div >
                 <input
-                  className='col-2'
+                  className='col-5'
                   placeholder='Bairro'
                   {...register('bairro')}
                 />
@@ -240,46 +243,46 @@ export function Checkout() {
           </div>
           <div className='payment-buttons'>
             <PaymentButton
-              htmlFor="credit card"
+              htmlFor="Cartão de crédito"
               color='#8047F8'
-              checked={buttonChecked === 'credit card'}
+              checked={buttonChecked === 'Cartão de crédito'}
             >
               <CreditCard size={22} />
               <p>Cartão de crédito</p>
               <input
                 type="radio"
-                id="credit card"
-                value="credit card"
+                id="Cartão de crédito"
+                value="Cartão de crédito"
                 name="payment"
-                onChange={() => handleChange('credit card')}
+                onChange={() => handleChange('Cartão de crédito')}
               />
             </PaymentButton>
             <PaymentButton
-              htmlFor="debit card"
+              htmlFor="Cartão de débito"
               color='#8047F8'
-              checked={buttonChecked === 'debit card'}
+              checked={buttonChecked === 'Cartão de débito'}
             >
               <Bank size={22} />
               <p>Cartão de débito</p>
               <input
                 type="radio"
-                id="debit card"
-                value="debit card"
-                onChange={() => handleChange('debit card')}
+                id="Cartão de débito"
+                value="Cartão de débito"
+                onChange={() => handleChange('Cartão de débito')}
                 name="payment"
               />
             </PaymentButton>
             <PaymentButton
-              htmlFor="money"
+              htmlFor="Dinheiro"
               color='#8047F8'
-              checked={buttonChecked === 'money'}>
+              checked={buttonChecked === 'Dinheiro'}>
               <Money size={22} />
               <p>Dinheiro</p>
               <input
                 type="radio"
-                id="money"
-                value="money"
-                onChange={() => handleChange('money')}
+                id="Dinheiro"
+                value="Dinheiro"
+                onChange={() => handleChange('Dinheiro')}
                 name="payment"
               />
             </PaymentButton>
@@ -291,67 +294,67 @@ export function Checkout() {
           <Title>Cafés selecionados</Title>
         </div>
 
-        <SidebarContainer>
-          <div className="checkout-container">
-            {cart.items.length !== 0 && (
-              cart.items.map(item => (
-                <div key={item.productId} className="checkout-list">
-                  <div className="tags-container">
-                    <div>
-                      <img src={item.imgUrl} />
+        <SidebarContainer>       
+            <div className="checkout-container">
+              {cart.items.length !== 0 && (
+                cart.items.map(item => (
+                  <div key={item.productId} className="checkout-list">
+                    <div className="tags-container">
+                      <div>
+                        <img src={item.imgUrl} />
+                      </div>
+                      <div>
+                        <div className="tags-title">
+                          <p>{item.title}</p>
+                        </div>
+                        <div className="tags">
+                          <p className='sign-tag'>
+                            <span
+                              onClick={() => handleDecrease(item.productId)}>-</span>
+                            <span>
+                              {item.quantity}
+                            </span>
+                            <span
+                              onClick={() => handleIncrease(item.productId)}>+</span>
+                          </p>
+                          <p className='remove-tag'>
+                            <span>
+                              <MapPin size={16} color='#4B2995' />
+                            </span>
+                            <span onClick={() => handleRemoveCartItem(item.productId)} >remover</span>
+                          </p>
+                        </div>
+                      </div>
                     </div>
                     <div>
-                      <div className="tags-title">
-                        <p>{item.title}</p>
-                      </div>
-                      <div className="tags">
-                        <p className='sign-tag'>
-                          <span
-                            onClick={() => handleDecrease(item.productId)}>-</span>
-                          <span>
-                            {item.quantity}
-                          </span>
-                          <span
-                            onClick={() => handleIncrease(item.productId)}>+</span>
-                        </p>
-                        <p className='remove-tag'>
-                          <span>
-                            <MapPin size={16} color='#4B2995' />
-                          </span>
-                          <span onClick={() => handleRemoveCartItem(item.productId)} >remover</span>
-                        </p>
-                      </div>
+                      <p className='price-tag'>
+                        R$   {item.subTotal.toFixed(2)}
+                      </p>
                     </div>
                   </div>
-                  <div>
-                    <p className='price-tag'>
-                      R$   {item.subTotal.toFixed(2)}
-                    </p>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
-          <div className="checkout-total-container">
-            <div className="checkout-subtotal">
-              <p>Total de itens</p>
-              <p>R${cart.total.toFixed(2)}</p>
+                ))
+              )}
             </div>
-            <div className="checkout-total-delivery">
-              <p>Entrega</p>
-              <p>R${delivery.toFixed(2)}</p>
+            <div className="checkout-total-container">
+              <div className="checkout-subtotal">
+                <p>Total de itens</p>
+                <p>R${cart.total.toFixed(2)}</p>
+              </div>
+              <div className="checkout-total-delivery">
+                <p>Entrega</p>
+                <p>R${delivery.toFixed(2)}</p>
+              </div>
+              <div className="checkout-total-order">
+                <h3>Total</h3>
+                <h3>R$ {deliverySum().toFixed(2)} </h3>
+              </div>
             </div>
-            <div className="checkout-total-order">
-              <h3>Total</h3>
-              <h3>R$ {deliverySum().toFixed(2)} </h3>
-            </div>
-          </div>
-          <ButtonCheckout
+          <ButtonCheckout     
             onClick={handleCheckoutSubmit}
-            /*  disabled={isSubmitDisable} */
-            type='submit'>
-            confirmar pedido
-          </ButtonCheckout>
+              disabled={isSubmitDisable}
+              type='submit'>
+              confirmar pedido
+            </ButtonCheckout>         
         </SidebarContainer >
       </div>
     </ContainerPrincipal>

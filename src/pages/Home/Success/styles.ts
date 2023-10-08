@@ -3,11 +3,10 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
- 
 
-  .success-image {    
-   margin-top: 132px;
-    align-items: baseline;   
+  .success-image {
+    margin-top: 132px;
+    align-items: baseline;
   }
 
   p {
@@ -22,19 +21,19 @@ export const Container = styled.div`
       font-family: 'Baloo 2', cursive;
     }
     p {
-      margin-bottom: 40px;     
+      margin-bottom: 40px;
     }
   }
-  .gradient{
+
+  .gradient {
     width: 526px;
   }
+
   .success-container {
     border: 1px solid ${(props) => props.theme['purple-light']};
     border-radius: 6px 36px;
     padding: 40px;
-    
   }
-
 
   span {
     display: flex;
@@ -59,10 +58,12 @@ export const Container = styled.div`
     background: ${(props) => props.theme['purple']};
     margin-right: 12px;
   }
+
   .timer-icon {
     background: ${(props) => props.theme['yellow']};
     margin-right: 12px;
   }
+
   .money-icon {
     background: ${(props) => props.theme['yellow-dark']};
     margin-right: 12px;

@@ -5,6 +5,7 @@ export interface CreateFinalOrderData {
   paymentMethod: string
   logradouro: string
   numero: string
+  complemento?: string
   bairro: string
   localidade: string
   uf: string
@@ -20,6 +21,7 @@ export const ContextFinalOrder = createContext<ContextFinalOrderType>({
     paymentMethod: '',
     logradouro: '',
     numero: '',
+    complemento: '',
     bairro: '',
     localidade: '',
     uf: '',

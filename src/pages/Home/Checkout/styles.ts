@@ -8,6 +8,7 @@ export const ContainerPrincipal = styled.div`
     padding-left: 32px;
   }  
 `
+
 export const CheckoutContainer = styled.main`
   background: ${(props) => props.theme['base-card']};
   display: flex;
@@ -90,10 +91,12 @@ export const PaymentContainer = styled.div`
   border-radius: 8px;
   font-size: 1.32rem;
 `
+
 export const PaymentButtonsContainer = styled.div`
   display: flex;
   gap: 1rem;
 `
+
 export const PaymentButton = styled.label<PaymentButtonProps>`
   width: 11.18rem;
   height: 3.2rem;
@@ -110,7 +113,6 @@ export const PaymentButton = styled.label<PaymentButtonProps>`
   justify-content: left;
   gap: 0.5rem;
   padding-left: 0.7rem;
-
   transition: background-color 0.5s ease-in-out;
 
   p {
@@ -258,8 +260,6 @@ export const FormContainer = styled.div`
     flex-wrap: wrap;
   }
   
-
-  
   form {
     button {
       border-style: none;
@@ -297,10 +297,6 @@ export const FormContainer = styled.div`
     border-radius: 4px;
     margin: 6px;    
   }
-
-  /*   .dsc-form-control[data-dirty='true'][data-invalid='true'] ~ div {
-    display: unset;
-  } */
 
   .form-error {
     color: ${(props) => props.theme['alert']};

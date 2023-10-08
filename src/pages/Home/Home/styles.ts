@@ -5,10 +5,6 @@ export const HomeContainer = styled.section`
   background-image: url('src/assets/images/background.svg');
   flex: 1;
 
-/*   .header-background {
-    border: 1px solid blue;
-  }
- */
   header {
     display: flex;
     justify-content: space-between;
@@ -27,6 +23,7 @@ export const HomeContainer = styled.section`
       font-family: 'Baloo 2', cursive;
       line-height: 62.4px;
     }
+    
     p {
       margin-top: 1rem;
       width: 36.75rem;
@@ -87,6 +84,7 @@ export const Subtitle = styled.h3`
   padding-top: 2rem;
   padding-bottom: 2rem;
 `
+
 export const ProductsList = styled.div`
   width: 100%;
   max-width: 1200px;

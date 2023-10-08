@@ -1,10 +1,8 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-
-import DefaultLayout from './layouts/DefaultLayout'
-
 import { Checkout } from './pages/Home/Checkout'
 import { Success } from './pages/Home/Success'
 import { Home } from './pages/Home/Home'
+import DefaultLayout from './layouts/DefaultLayout'
 
 export function Router() {
   return (
