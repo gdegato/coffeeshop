@@ -2,13 +2,13 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
-  padding-left: 50px;
+  padding-left: 3.125rem;
   align-items: center;
   justify-content: space-around;
   width: auto;
 
   .success-image {
-    margin-top: 132px;
+    margin-top: 8.25rem;
     align-items: baseline;
   }
 
@@ -18,13 +18,13 @@ export const Container = styled.div`
 
   .success-container-title {
     h2 {
-      font-size: 32px;
+      font-size: 2rem;
       font-weight: 800;
       color: ${(props) => props.theme['yellow-dark']};
       font-family: 'Baloo 2', cursive;
     }
     p {
-      margin-bottom: 40px;
+      margin-bottom: 2.5rem;
     }
   }
 
@@ -39,7 +39,7 @@ export const Container = styled.div`
   }
 
   .success-container {
-    padding: 40px;
+    padding: 2.5rem;
     border-radius: inherit;
     background-color: ${(props) => props.theme['background']};
   }
@@ -58,23 +58,23 @@ export const Container = styled.div`
   .success-timer,
   .success-payment {
     display: flex;
-    padding: 16px 0;
-    font-size: 16px;
+    padding: 1rem 0;
+    font-size: 1rem;
     line-height: 130%;
   }
 
   .map-icon {
     background: ${(props) => props.theme['purple']};
-    margin-right: 12px;
+    margin-right: 0.75rem;
   }
 
   .timer-icon {
     background: ${(props) => props.theme['yellow']};
-    margin-right: 12px;
+    margin-right: 0.75rem;
   }
 
   .money-icon {
     background: ${(props) => props.theme['yellow-dark']};
-    margin-right: 12px;
+    margin-right: 0.75rem;
   }
 `

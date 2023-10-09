@@ -21,8 +21,8 @@ export const CartCounter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   font-size: 10px;
   border-radius: 50%;
   position: absolute;

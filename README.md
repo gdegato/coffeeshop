@@ -1,27 +1,58 @@
-# React + TypeScript + Vite
+# Coffee Delivery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esse projeto foi desenvolvido durante o Curso ReactJS do Ignite - Rocketseat
 
-Currently, two official plugins are available:
+## ✔️ Confira o projeto completo em:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<a href="https://coffeeshop-xyj7.vercel.app/">Coffee Delivery</a>
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🔨 Funcionalidades do projeto
 
-- Configure the top-level `parserOptions` property like this:
+Coffee Delivery é uma aplicação para gerenciar um carrinho de compras de uma cafeteria fictícia, que contém as seguintes funcionalidades:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- Listagem de produtos (cafés) disponíveis para compra
+- Adicionar uma quantidade específicas de itens no carrinho
+- Aumentar ou remover a quantidade de itens no carrinho
+- Formulário para o usuário preencher o seu endereço
+- Consulta à API CEP para o preenchimento do endereço
+- Exibir o total de itens no carrinho no Header
+- Exibir o valor total da soma de itens no carrinho multiplicados pelo valor
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+## Demonstração
+
+![Image](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHhsYTh1NWFwc3JlZGpwMGQ3ZmJmYjEwcjBzdG56NGduZGRjZmhkbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SnKAXQrq8SSsCv2i8k/giphy.gif)
+
+## ✔️ Técnicas e tecnologias utilizadas
+
+ O Front-end foi desenvolvido utilizando React e Typescript, este último, por ser um superset do Javascript, busca evitar erros inesperados ou erros de tipos avisados em tempo de compilação. Foram utilizadas funcionalidades diversas, tais como: 
+
+- Estados
+- ContextAPI
+- LocalStorage
+- Imutabilidade do estado
+- Listas e chaves no ReactJS
+- Propriedades
+- Componentização
+
+Algumas tecnologias e bibliotecas utilizadas no desenvolvimento desta aplicação:
+
+- `Component Styles`
+- `Phosphor Icons`
+- `Zod`
+- `API CEP`
+- `Axios`
+- `React Hook Form`
+- `Global State | Context API`
+- `Routes`
+- `Local storage e lógica de carrinho de compras`
+- `Implantação, CI/CD em plataforma`
+- `Vite`
+
+
+## 🛠️ Abrir e rodar o projeto
+
+Para abrir e rodar o projeto, execute `yarn` para instalar as dependências e `yarn dev` para iniciar o projeto.
+
+Depois, acesse <a href="http://localhost:5173/">http://localhost:5173/</a> no seu navegador.

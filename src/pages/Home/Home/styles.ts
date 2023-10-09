@@ -6,7 +6,7 @@ export const HomeContainer = styled.section`
 `
 
 export const Header = styled.header`
-  background-image: url('src/assets/images/background.svg');
+  background-image: url('/images/background.svg');
   background-size: cover;
   display: flex;
   flex: 1;
@@ -15,7 +15,7 @@ export const Header = styled.header`
   margin: 0 auto;
   padding: 2rem 0;
   grid-gap: 40px;
-  padding: 100px 90px;
+  padding: 6.25rem 5.625rem;
 
   h1 {
     font-size: 3rem;
@@ -23,7 +23,7 @@ export const Header = styled.header`
     height: 7.75rem;
     color: ${(props) => props.theme['base-title']};
     font-family: 'Baloo 2', cursive;
-    line-height: 62.4px;
+    line-height: 3.9rem;
   }
 
   p {
@@ -84,7 +84,7 @@ export const Subtitle = styled.h3`
   margin: 0 auto;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  padding-left: 40px;
+  padding-left: 2.5rem;
 `
 
 export const ProductsList = styled.div`
@@ -95,5 +95,5 @@ export const ProductsList = styled.div`
   margin: 0px auto;
   align-content: center;
   grid-template-columns: repeat(auto-fill, minmax(280px, 4fr));
-  padding: 0px 0px 150px 40px;
+  padding: 0px 0px 9.375rem 2.5rem;
 `

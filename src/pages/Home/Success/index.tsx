@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { CurrencyDollarSimple, MapPin, Timer } from "phosphor-react";
 import { Container } from "./styles";
-import deliveryguy from '../../../assets/images/deliveryguy.svg'
+import deliveryguy from '/images/deliveryguy.svg'
 import { ContextFinalOrder } from "../../../utils/context-order";
 import { useContext } from 'react'
 

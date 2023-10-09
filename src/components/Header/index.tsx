@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import logo from '../../assets/images/logo.svg'
+import logo from '/images/logo.svg'
 import { HeaderContainer } from './styles'
 import { MapPin } from 'phosphor-react'
 import CartIcon from '../CartIcon'

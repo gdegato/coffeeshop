@@ -5,21 +5,21 @@ export const ContainerPrincipal = styled.div`
   justify-content: center;
 
   .aside-title {
-    padding-left: 32px;
-  }  
+    padding-left: 2rem;
+  }
 `
 
 export const CheckoutContainer = styled.main`
   background: ${(props) => props.theme['base-card']};
   display: flex;
   flex-direction: column;
-  border-radius: 6px;   
+  border-radius: 6px;
 `
 
 export const Title = styled.h3`
   color: ${(props) => props.theme['base-title']};
   font-family: 'Baloo 2', cursive;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
 `
 
 export const ButtonCheckout = styled.button`
@@ -30,12 +30,12 @@ export const ButtonCheckout = styled.button`
   text-transform: uppercase;
   font-size: 14px;
   padding: 8px;
-  height: 46px;
+  height: 2.785rem;
 
   :hover {
-      background: ${(props) => props.theme['yellow-dark']};
-      transition: 1s;      
-    }  
+    background: ${(props) => props.theme['yellow-dark']};
+    transition: 1s;
+  }
 `
 
 //Payment
@@ -45,18 +45,18 @@ interface PaymentButtonProps {
 }
 
 export const ContainerPayment = styled.section`
-  margin-top: 40px;
-  width: 662px;
+  margin-top: 2.5rem;
+  width: 41.375rem;
   height: auto;
   border-radius: 6px;
   background: ${(props) => props.theme['base-card']};
-  padding: 40px;
+  padding: 2.5rem;
   color: ${(props) => props.theme['base-text']};
 
   .payment-title {
     display: flex;
     flex-direction: column;
-    font-size: 16px;
+    font-size: 1rem;
 
     p:nth-child(1) {
       font-weight: bold;
@@ -67,8 +67,8 @@ export const ContainerPayment = styled.section`
       }
     }
     p:nth-child(2n) {
-      margin-left: 30px;
-      margin-bottom: 28px;
+      margin-left: 1.875rem;
+      margin-bottom: 1.75rem;
     }
   }
   .payment-buttons {
@@ -129,7 +129,7 @@ export const PaymentButton = styled.label<PaymentButtonProps>`
     background-color: ${(props) => props.theme['purple-light']};
     box-shadow: 0 0 0 2px ${(props) => props.theme.purple};
   }
-  
+
   input {
     opacity: 0;
   }
@@ -140,7 +140,7 @@ export const PaymentButton = styled.label<PaymentButtonProps>`
 export const SidebarContainer = styled.aside`
   background: ${(props) => props.theme['base-card']};
   width: 448px;
-  padding: 40px;
+  padding: 2.5rem;
   margin-left: 32px;
   border-radius: 6px 36px;
   display: flex;
@@ -149,16 +149,16 @@ export const SidebarContainer = styled.aside`
   .checkout-list {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 24px;
-    padding-bottom: 24px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
     color: ${(props) => props.theme['base-text']};
     border-bottom: 1px solid ${(props) => props.theme['base-button']};
   }
 
   img {
-    width: 64px;
-    height: 64px;
-    margin-right: 20px;
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1.25rem;
   }
   .tags-title {
     margin-bottom: 8px;
@@ -172,8 +172,8 @@ export const SidebarContainer = styled.aside`
   }
   .sign-tag {
     background: ${(props) => props.theme['base-button']};
-    height: 32px;
-    width: 72px;
+    height: 2rem;
+    width: 4.5rem;
     text-align: center;
     border-radius: 6px;
     display: flex;
@@ -189,8 +189,8 @@ export const SidebarContainer = styled.aside`
   }
 
   .remove-tag {
-    width: 91px;
-    height: 32px;
+    width: 5.68rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -203,22 +203,21 @@ export const SidebarContainer = styled.aside`
     gap: 4px;
 
     :hover {
-      background: ${(props) => props.theme['purple-light']};      
+      background: ${(props) => props.theme['purple-light']};
     }
   }
 
   .price-tag {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
   }
 
   .checkout-container {
-   
-    margin-top: 20px;
+    margin-top: 1.25rem;
   }
 
   .checkout-total-container {
-    margin: 24px 0;
+    margin: 1.5rem 0;
   }
 
   .checkout-subtotal,
@@ -230,43 +229,43 @@ export const SidebarContainer = styled.aside`
     padding: 6px 0;
 
     p:nth-child(1) {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
     p:nth-child(2n) {
       font-weight: bold;
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
   .checkout-total-order {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 `
 
 //Address Form
 
 export const FormContainer = styled.div`
-  width: 662px;
+  width: 41.375rem;
   height: auto;
-  border-radius: 6px; 
+  border-radius: 6px;
   display: flex;
-  padding: 40px;
+  padding: 2.5rem;
   background: ${(props) => props.theme['base-card']};
 
-  .input-cep{
+  .input-cep {
     display: flex;
     align-items: center;
   }
 
-  .container-form{
+  .container-form {
     display: flex;
     flex-wrap: wrap;
   }
-  
+
   form {
     button {
       border-style: none;
-      height: 42px;
-      width: 40px;
+      height: 2.625rem;
+      width: 2.5rem;
       margin-left: 4px;
     }
   }
@@ -288,8 +287,8 @@ export const FormContainer = styled.div`
       }
     }
     p:nth-child(2n) {
-      margin-left: 30px;
-      margin-bottom: 28px;
+      margin-left: 1.875rem;
+      margin-bottom: 1.75rem;
     }
   }
 
@@ -297,17 +296,17 @@ export const FormContainer = styled.div`
     background: ${(props) => props.theme['base-input']};
     border: 1px solid ${(props) => props.theme['base-input']};
     border-radius: 4px;
-    margin: 6px;    
+    margin: 6px;
   }
 
   .form-error {
     color: ${(props) => props.theme['alert']};
-    font-size: 12px;     
-  } 
+    font-size: 12px;
+  }
 
   [class^='col-'] {
     box-sizing: border-box;
-    height: 42px;
+    height: 2.625rem;
     padding: 12px;
   }
 
@@ -333,4 +332,3 @@ export const FormContainer = styled.div`
     width: 60px;
   }
 `
-

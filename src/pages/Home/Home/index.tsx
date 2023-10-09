@@ -1,6 +1,6 @@
 import coffeeList from '../../../../db.json'
 import { Card } from '../../../components/Card'
-import coffeeCup from '../../../assets/images/coffee-cup.png'
+import coffeeCup from '/images/coffee-cup.png'
 import { ShoppingCart, Timer, Coffee, Package } from 'phosphor-react'
 import { Header, HomeContainer, ProductsList, Subtitle } from './styles'
 

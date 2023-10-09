@@ -15,7 +15,7 @@ export const CoffeeCards = styled.div`
   .price {  
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 
     .price-tag {
       display: flex;
@@ -31,8 +31,8 @@ export const CoffeeCards = styled.div`
 
    .sign-tag {
       background: ${(props) => props.theme['base-button']};
-      height: 38px;
-      width: 72px;
+      height: 2.375rem;
+      width: 4.5rem;
       text-align: center;
       border-radius: 6px;
       display: flex;
@@ -48,14 +48,14 @@ export const CoffeeCards = styled.div`
 
     .cart {
       background-color: ${(props) => props.theme['purple-dark']};
-      width: 38px;
-      height: 38px;
+      width:2.375rem;
+      height: 2.375rem;
       text-align: center;
       border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 20px;
+      margin-right: 1.25rem;
     }
   }
 
@@ -73,11 +73,11 @@ export const CoffeeCards = styled.div`
 
   p {
     color: ${(props) => props.theme['base-label']};
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 130%;
     text-align: center;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
   }
 
   .tag {
@@ -92,12 +92,12 @@ export const CoffeeCards = styled.div`
       flex-direction: column;
       align-content: center;
       justify-content: center;
-      height: 21px;
+      height: 1.32rem;
       width: fit-content;
       margin-right: 5px;
       padding: 4px 8px;
       text-transform: uppercase;
-      border-radius: 100px;
+      border-radius: 6.25rem;
     }
   }
 `

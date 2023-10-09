@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "imgUrl": "src/assets/images/expressotradicional.png",
+    "imgUrl": "/images/expressotradicional.png",
     "category": [
       "tradicional"
      
@@ -12,7 +12,7 @@
   },
   {
     "id": 2,
-    "imgUrl": "src/assets/images/expressoamericano.png",
+    "imgUrl": "/images/expressoamericano.png",
     "category": [
       "tradicional"
     ],
@@ -22,7 +22,7 @@
   },
   {
     "id": 3,
-    "imgUrl": "src/assets/images/expressocremoso.png",
+    "imgUrl": "/images/expressocremoso.png",
     "category": [
       "tradicional"
     ],
@@ -32,7 +32,7 @@
   },
   {
     "id": 4,
-    "imgUrl": "src/assets/images/expressogelado.png",
+    "imgUrl": "/images/expressogelado.png",
     "category": [
       "tradicional",
       "gelado"
@@ -43,7 +43,7 @@
   },
   {
     "id": 5,
-    "imgUrl": "src/assets/images/cafecomleite.png",
+    "imgUrl": "/images/cafecomleite.png",
     "category": [
       "tradicional",
       "com leite"
@@ -54,7 +54,7 @@
   },
   {
     "id": 6,
-    "imgUrl": "src/assets/images/cafecomleite.png",
+    "imgUrl": "/images/cafecomleite.png",
     "category": [
       "tradicional",
       "com leite"
@@ -65,7 +65,7 @@
   },
   {
     "id": 7,
-    "imgUrl": "src/assets/images/capuccino.png",
+    "imgUrl": "/images/capuccino.png",
     "category": [
       "tradicional",
       "com leite"
@@ -76,7 +76,7 @@
   },
   {
     "id": 8,
-    "imgUrl": "src/assets/images/macchiato.png",
+    "imgUrl": "/images/macchiato.png",
     "category": [
       "tradicional",
       "com leite"
@@ -87,7 +87,7 @@
   },
   {
     "id": 9,
-    "imgUrl": "src/assets/images/mocaccino.png",
+    "imgUrl": "/images/mocaccino.png",
     "category": [
       "tradicional",
       "com leite"
@@ -98,7 +98,7 @@
   },
   {
     "id": 10,
-    "imgUrl": "src/assets/images/chocolatequente.png",
+    "imgUrl": "/images/chocolatequente.png",
     "category": [
       "tradicional",
       "com leite"
@@ -109,7 +109,7 @@
   },
   {
     "id": 11,
-    "imgUrl": "src/assets/images/cubano.png",
+    "imgUrl": "/images/cubano.png",
     "category": [
       "especial",
       "alcoólico",
@@ -121,7 +121,7 @@
   },
   {
     "id": 12,
-    "imgUrl": "src/assets/images/havaiano.png",
+    "imgUrl": "/images/havaiano.png",
     "category": [
       "especial"     
     ],
@@ -131,7 +131,7 @@
   },
   {
     "id": 13,
-    "imgUrl": "src/assets/images/arabe.png",
+    "imgUrl": "/images/arabe.png",
     "category": [
       "especial"     
     ],
@@ -141,7 +141,7 @@
   },
   {
     "id": 14,
-    "imgUrl": "src/assets/images/arabe.png",
+    "imgUrl": "/images/arabe.png",
     "category": [
       "especial",
       "alcoólico"    
