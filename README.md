@@ -4,7 +4,7 @@ Esse projeto foi desenvolvido durante o Curso ReactJS do Ignite - Rocketseat
 
 ## ✔️ Confira o projeto completo em:
 
-<a href="https://coffeeshop-xyj7.vercel.app/">Coffee Delivery</a>
+<a href="https://coffeeshop-rocket.vercel.app/">Coffee Delivery</a>
 
 
 ## 🔨 Funcionalidades do projeto
